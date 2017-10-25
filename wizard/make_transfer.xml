@@ -1,0 +1,38 @@
+<openerp>
+    <data>
+
+         <act_window name="Make Transfer"
+            res_model="stock.transfer.maker"
+            src_model="sale.order"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            multi="True"
+            id="action_make_transfer"/>
+
+
+        <record id="make_transfer" model="ir.ui.view">
+            <field name="name">Make Transfer Form</field>
+            <field name="model">stock.transfer.maker</field>
+            <field name="arch" type="xml">
+		<form>
+		    <field name="sale" readonly="1" />
+		    <field name="transfer_lines" widget="one2many_list" >
+		        <tree editable="top">
+			    <field name="picking" invisible="1" />
+			    <field name="move" invisible="1" />
+			    <field name="sale" invisible="1" />
+			    <field name="product" />
+			    <field name="location" />
+			    <field name="qty" />
+		        </tree>
+		    </field>
+		    <group>
+		        <button string="Create Transfer(s)" type="object" name="make_transfer" />
+		    </group>
+		</form>
+	    </field>
+	</record>
+
+    </data>
+</openerp>
